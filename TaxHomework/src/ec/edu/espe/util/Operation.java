@@ -30,7 +30,6 @@ public class Operation {
             operand1=add(operand1, (-operand2));
             cont++;
         }
-        System.out.print("El residuo es: " + operand1);
         return cont;
     }
     

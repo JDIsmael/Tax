@@ -27,13 +27,23 @@ public class Tax_Calculation {
     
     
     public int convertToCents(float dolars){
-        String dolarString = ""+dolars;
-        String[] separator = dolarString.split("\\.");
-        int partInt= Integer.parseInt(separator[0]);
-        int partDecimal = Integer.parseInt(separator[1]);
-        
-        return Operation.add(Operation.multi(partInt, 100),partDecimal);
+        return (int) (dolars*100);
     } 
+    
+    public int calculateTax(int taxBase){
+        ArrayList<Integer> dataTax = new ArrayList<>();
+        dataTax = defineInTable(taxBase);
+        int calcule, percentage, tax;
+        if(dataTax.get(0) != 0 || dataTax.get(1) != 0){
+            
+            calcule = Operation.sub(taxBase, dataTax.get(2));
+            percentage = Operation.div(Operation.multi(calcule, dataTax.get(1)), 100);
+            
+            return Operation.add(percentage, dataTax.get(0));
+        }else
+            return 0;
+        
+    }
     
     
     public ArrayList<Integer> defineInTable(int taxBase){
@@ -44,6 +54,7 @@ public class Tax_Calculation {
         if(taxBase>=limitFractionTax.get(7)){
             establishedBase.add(basicFractionTax.get(14));
             establishedBase.add(basicFractionTax.get(15));
+            establishedBase.add(limitFractionTax.get(7));
             return establishedBase;
         }
         
@@ -55,9 +66,10 @@ public class Tax_Calculation {
             
         do{
             if(taxBase>=limitFractionTax.get(cont) 
-                    && taxBase < limitFractionTax.get((cont+1))){
+                    && taxBase < limitFractionTax.get((Operation.add(cont, 1)))){
                 establishedBase.add(basicFractionTax.get(cont2));
                 establishedBase.add(basicFractionTax.get(cont2 +1));
+                establishedBase.add(limitFractionTax.get(cont));
                 cont = 6;
             }
             cont++;

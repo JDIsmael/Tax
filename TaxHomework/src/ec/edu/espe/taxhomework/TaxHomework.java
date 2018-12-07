@@ -6,6 +6,7 @@
 package ec.edu.espe.taxhomework;
 
 import ec.edu.espe.model.Tax_Calculation;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,11 @@ public class TaxHomework {
      */
     public static void main(String[] args) {
         Tax_Calculation tax = new Tax_Calculation();
+        System.out.println(tax.convertToCents(45.23f));
+        ArrayList<Integer> prueba = new ArrayList<>();
+        int num=16732;
+        int num2 = tax.calculateTax(tax.convertToCents(num));
+        System.out.println("el impesto a pagar de " + num + " es: "+ num2 );
         
     }
     
