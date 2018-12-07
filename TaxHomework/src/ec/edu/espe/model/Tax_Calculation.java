@@ -6,13 +6,65 @@
 package ec.edu.espe.model;
 
 import ec.edu.espe.util.Operation;
+import static ec.edu.espe.util.Operation.multi;
+import static ec.edu.espe.util.Operation.sub;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author JDIsmael
  */
 public class Tax_Calculation {
+    
+    Person person = new Person();
+    
+    int sri=convertToCents(9.45f);
+    String id;
+    float livingplace,education,clothing,health,salary;
+    Scanner in= new Scanner (System.in);
+    
+    public void indatas(){
+        
+        System.out.println("Ingrese cedula o ruc");
+        person.setId(in.nextLine());
+        System.out.println("Ingrese Sueldo");
+        person.setSalary(in.nextFloat());        
+        System.out.println("              Ingrese Gatos");
+        System.out.println("Vivienda:");
+        person.setLivingplace(in.nextFloat());
+        System.out.println("Educacion:");
+        person.setEducation(in.nextFloat());
+        System.out.println("Vestimenta:");
+        person.setClothing(in.nextFloat());
+        System.out.println("Salud:");
+        person.setHealth(in.nextFloat());
+   
+        
+    }
+    public int inmonthneto(){
+        int salaryint=convertToCents(person.getSalary());
+        int srit;
+        srit = ((sri*salaryint)/10000);
+        int monthneto;
+        monthneto=sub(salaryint,srit);
+        return monthneto;
+    }
+    public int incomeage(){
+        int valoranual=multi(inmonthneto(),12);
+    return valoranual;
+    }
+    public int deductiblExpenses(){
+        int deductible;
+        deductible=convertToCents(person.getHealth()+person.getLivingplace()+person.getEducation()+person.getClothing());
+        if(deductible>incomeage()) {
+            System.out.println("no puede gastas mas de lo que gana");
+            System.out.println("su sueldo es solo de"+inmonthneto());
+            return -1;
+        }
+       
+        return deductible;
+    }
     
     private ArrayList<Integer> limitFractionTax;
     private ArrayList<Integer> basicFractionTax;
@@ -30,6 +82,12 @@ public class Tax_Calculation {
         return (int) (dolars*100);
     } 
     
+    /* Este metodo recibe como parametro la base imponible 
+     * y desde hay se hace el calculo del impuesto
+     * si la base imponible se encuentra entre los rango de la tabla 
+     * devuelve el impuesto a pagar, caso contrario 
+     * devolvera 0 si no debe de pagar impuesto
+     */
     public int calculateTax(int taxBase){
         ArrayList<Integer> dataTax = new ArrayList<>();
         dataTax = defineInTable(taxBase);
@@ -45,7 +103,7 @@ public class Tax_Calculation {
         
     }
     
-    
+
     public ArrayList<Integer> defineInTable(int taxBase){
         int cont = 0;
         int cont2 = 0;
