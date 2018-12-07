@@ -10,26 +10,18 @@ package ec.edu.espe.util;
  */
 public class Operation {
     
-    int result;
-
     public Operation() {
     }
-
-    public Operation(int result) {
-        this.result = result;
+    
+    public static int add(int operand1, int operand2){
+        return operand1 + operand2;
     }
     
-    public int add(int operand1, int operand2){
-        result=0;
-        result= operand1 + operand2;
-        return result;
-    }
-    
-    public int sub(int operand1, int operand2){
+    public static int sub(int operand1, int operand2){
         return add(operand1, -(operand2));
     }
     
-    public int div(int operand1, int operand2){
+    public static int div(int operand1, int operand2){
         
         int cont=0;
         
@@ -42,7 +34,7 @@ public class Operation {
         return cont;
     }
     
-    public int multi(int operand1, int operand2){
+    public static int multi(int operand1, int operand2){
         int acum=0;
         int cont=0;
         boolean check = false;

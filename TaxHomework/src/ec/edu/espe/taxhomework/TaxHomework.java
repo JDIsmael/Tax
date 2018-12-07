@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.taxhomework;
 
+import ec.edu.espe.model.Tax_Calculation;
+
 /**
  *
  * @author Carlos Villarreal
@@ -15,7 +17,8 @@ public class TaxHomework {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Tax_Calculation tax = new Tax_Calculation();
+        
     }
     
 }
