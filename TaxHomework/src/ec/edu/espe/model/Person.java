@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class Person {
      private String id;
     private float livingplace;
+
+  
     private float education;
     private float clothing;
     private float health;
@@ -22,27 +24,37 @@ public class Person {
     public Person(){
         
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLivingplace(float livingplace) {
+        this.livingplace = livingplace;
+    }
+
+    public void setEducation(float education) {
+        this.education = education;
+    }
+
+    public void setClothing(float clothing) {
+        this.clothing = clothing;
+    }
+
+    public void setHealth(float health) {
+        this.health = health;
+    }
+
+    public void setIn(Scanner in) {
+        this.in = in;
+    }
     
     
     
-    public void dateperson(){
-        System.out.println("Ingrese cedula o ruc");
-        id=in.nextLine();
-        System.out.println("Ingrese Sueldo");
-        salary=in.nextFloat();
-        
-        System.out.println("              Ingrese Gatos");
-        System.out.println("Vivienda:");
-        livingplace=in.nextFloat();
-        System.out.println("Educacion:");
-        education=in.nextFloat();
-        System.out.println("Vestimenta:");
-        clothing=in.nextFloat();
-        System.out.println("Salud:");
-        health=in.nextFloat();      
-        
-                
-    }   
+    
+      public void setSalary(float salary) {
+        this.salary = salary;
+    }
 
     public String getId() {
         return id;
@@ -80,5 +92,4 @@ public class Person {
         this.health = health;
         this.salary = salary;
     }
-    
 }
