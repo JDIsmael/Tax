@@ -18,6 +18,10 @@ public class TaxHomework {
      */
     public static void main(String[] args) {
         Tax_Calculation tax = new Tax_Calculation();
+        tax.indatas();
+        System.out.println("salario mensual en centavos: "+tax.inmonthneto());
+        System.out.println("salario anual en centavos: "+tax.incomeage());
+        System.out.println("deducibles deducibles en centavos"+tax.deductiblExpenses());
         
     }
     
