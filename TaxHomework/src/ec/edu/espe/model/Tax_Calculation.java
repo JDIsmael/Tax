@@ -11,4 +11,14 @@ package ec.edu.espe.model;
  */
 public class Tax_Calculation {
     
+    
+    
+    
+    
+    public int convertToCents(float dolars){
+        
+        return (int) dolars*100;
+    } 
+    
+    
 }
