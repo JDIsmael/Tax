@@ -18,12 +18,13 @@ public class TaxHomework {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         Tax_Calculation tax = new Tax_Calculation();
-        System.out.println(tax.convertToCents(45.23f));
-        ArrayList<Integer> prueba = new ArrayList<>();
-        int num=16732;
-        int num2 = tax.calculateTax(tax.convertToCents(num));
-        System.out.println("el impesto a pagar de " + num + " es: "+ num2 );
+        tax.indatas();
+        int valor_a_pagar = tax.calculateTax()/100;
+        System.out.println("el impesto a pagar de es:"+valor_a_pagar);
+        tax.paymentDate();
+        
         
     }
     

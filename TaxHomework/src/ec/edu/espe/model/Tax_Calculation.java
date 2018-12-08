@@ -18,7 +18,6 @@ import java.util.Scanner;
 public class Tax_Calculation {
     
     Person person = new Person();
-    
     int sri=convertToCents(9.45f);
     String id;
     float livingplace,education,clothing,health,salary;
@@ -65,6 +64,12 @@ public class Tax_Calculation {
        
         return deductible;
     }
+    public float taxBase (){
+        float result;
+        result = incomeage()-deductiblExpenses();
+        
+        return result;
+    }
     
     private ArrayList<Integer> limitFractionTax;
     private ArrayList<Integer> basicFractionTax;
@@ -88,7 +93,9 @@ public class Tax_Calculation {
      * devuelve el impuesto a pagar, caso contrario 
      * devolvera 0 si no debe de pagar impuesto
      */
-    public int calculateTax(int taxBase){
+    
+    public int calculateTax(){
+        int taxBase=(int) taxBase();
         ArrayList<Integer> dataTax = new ArrayList<>();
         dataTax = defineInTable(taxBase);
         int calcule, percentage, tax;
@@ -171,5 +178,35 @@ public class Tax_Calculation {
         
     }
     
+    public void paymentDate (){
+        
+        String cedula = person.getId();
+        int ninthDigi= Integer.parseInt(cedula.substring(8,9));
+        if (ninthDigi==1){
+            System.out.println("Su fecha limíte de pago es el 10 de MARZO");
+        }else if (ninthDigi==2){
+            System.out.println("Su fecha limíte de pago es el 12 de MARZO");
+        }else if (ninthDigi==3){
+            System.out.println("Su fecha limíte de pago es el 14 de MARZO");
+        }else if (ninthDigi==4){
+            System.out.println("Su fecha limíte de pago es el 16 de MARZO");
+        }else if (ninthDigi==5){
+            System.out.println("Su fecha limíte de pago es el 18 de MARZO");
+        }else if (ninthDigi==6){
+            System.out.println("Su fecha limíte de pago es el 20 de MARZO");
+        }else if (ninthDigi==7){
+            System.out.println("Su fecha limíte de pago es el 22 de MARZO");
+        }else if (ninthDigi==8){
+            System.out.println("Su fecha limíte de pago es el 24 de MARZO");
+        }else if (ninthDigi==9){
+            System.out.println("Su fecha limíte de pago es el 26 de MARZO");
+        }else if (ninthDigi==0){
+            System.out.println("Su fecha limíte de pago es el 28 de MARZO");
+        }
+        
+        
+        //
     
+    
+             }
 }

@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author JDIsmael
  */
 public class Person {
-     private String id;
+    private String id;
     private float livingplace;
 
   
