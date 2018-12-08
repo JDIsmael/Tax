@@ -8,6 +8,7 @@ package ec.edu.espe.model;
 import ec.edu.espe.util.Operation;
 import static ec.edu.espe.util.Operation.multi;
 import static ec.edu.espe.util.Operation.sub;
+import ec.edu.espe.util.Validation;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,15 +19,20 @@ import java.util.Scanner;
 public class Tax_Calculation {
     
     Person person = new Person();
+    Validation validation = new Validation();
     int sri=convertToCents(9.45f);
     String id;
     float livingplace,education,clothing,health,salary;
     Scanner in= new Scanner (System.in);
     
     public void indatas(){
-        
-        System.out.println("Ingrese cedula o ruc");
-        person.setId(in.nextLine());
+        String identifyCard;
+        boolean aux;
+        do{
+            System.out.println("Ingrese cedula ");
+            identifyCard=in.nextLine();
+            aux = validation.validationOfIdentifyCard(identifyCard);
+        }while(!aux);
         System.out.println("Ingrese Sueldo");
         person.setSalary(in.nextFloat());        
         System.out.println("              Ingrese Gatos");
