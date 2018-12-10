@@ -12,11 +12,20 @@ import ec.edu.espe.util.Validation;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
 /**
  *
  * @author JDIsmael
  */
 public class Tax_Calculation {
+    
+
+    
+    /**
+     * yout salary is in your centens
+     * 
+     */
     
     Person person = new Person();
     Validation validation = new Validation();
@@ -33,6 +42,7 @@ public class Tax_Calculation {
             identifyCard=in.nextLine();
             aux = validation.validationOfIdentifyCard(identifyCard);
         }while(!aux);
+        person.setId(identifyCard);
         System.out.println("Ingrese Sueldo");
         person.setSalary(in.nextFloat());        
         System.out.println("              Ingrese Gatos");
@@ -100,8 +110,22 @@ public class Tax_Calculation {
      * devolvera 0 si no debe de pagar impuesto
      */
     
-    public int calculateTax(){
-        int taxBase=(int) taxBase();
+     /**
+ * dfdfgd
+ * dgdg
+ * dgdg
+ * dfgdg
+ * dgdgf
+ * mogli sdfdf
+ * sdfsfs
+ * t
+ * @param taxBase
+ * @return
+ * the impuesto a la renta but year 2018
+ */
+    
+    public int calculateTax(int taxBase){
+        //int taxBase=(int) taxBase();
         ArrayList<Integer> dataTax = new ArrayList<>();
         dataTax = defineInTable(taxBase);
         int calcule, percentage, tax;
@@ -112,7 +136,10 @@ public class Tax_Calculation {
             
             return Operation.add(percentage, dataTax.get(0));
         }else
-            return 0;
+            if((dataTax.get(0) == -1 || dataTax.get(1) == -1))
+                return -1;
+            else
+                return 0;
         
     }
     
@@ -121,7 +148,10 @@ public class Tax_Calculation {
         int cont = 0;
         int cont2 = 0;
         ArrayList<Integer> establishedBase = new ArrayList<>();
-        
+        if(taxBase<0){
+            establishedBase.add(-1);
+            establishedBase.add(-1);
+        }
         if(taxBase>=limitFractionTax.get(7)){
             establishedBase.add(basicFractionTax.get(14));
             establishedBase.add(basicFractionTax.get(15));
@@ -187,7 +217,7 @@ public class Tax_Calculation {
     public void paymentDate (){
         
         String cedula = person.getId();
-        int ninthDigi= Integer.parseInt(cedula.substring(8,9));
+        int ninthDigi = Integer.parseInt(cedula.substring(8,9));
         if (ninthDigi==1){
             System.out.println("Su fecha limíte de pago es el 10 de MARZO");
         }else if (ninthDigi==2){

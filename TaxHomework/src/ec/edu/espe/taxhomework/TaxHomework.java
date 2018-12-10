@@ -21,8 +21,8 @@ public class TaxHomework {
         
         Tax_Calculation tax = new Tax_Calculation();
         tax.indatas();
-        int valor_a_pagar = tax.calculateTax()/100;
-        System.out.println("el impesto a pagar de es:"+valor_a_pagar);
+        //int valor_a_pagar = tax.calculateTax()/100;
+        //System.out.println("el impesto a pagar de es:"+valor_a_pagar);
         tax.paymentDate();
         
         
